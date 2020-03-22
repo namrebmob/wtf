@@ -4,7 +4,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-app.config.from_envvar('APP_SETTINGS')
+app.config.from_envvar('SECRET_KEY')
+app.config.from_envvar('MAGIC_CONTENT_LENGTH')
 
 
 @app.route('/', methods=['GET', 'POST'])
