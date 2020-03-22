@@ -1,11 +1,12 @@
+import os
 import magic, mimetypes
 from flask import Flask, request, render_template, url_for
 from datetime import datetime
 
 app = Flask(__name__)
 
-app.config.from_envvar('SECRET_KEY')
-app.config.from_envvar('MAGIC_CONTENT_LENGTH')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', None)
+app.config['MAGIC_CONTENT_LENGTH'] = os.environ.get('MAGIC_CONTENT_LENGTH', None)
 
 
 @app.route('/', methods=['GET', 'POST'])

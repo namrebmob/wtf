@@ -1,5 +1,3 @@
-import tempfile
-
 DEBUG = True
 SECRET_KEY = '14b52e7e5c517066a2f45b1ee8355e13'
 MAGIC_CONTENT_LENGTH = 2048
