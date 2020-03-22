@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', None)
-app.config['MAGIC_CONTENT_LENGTH'] = os.environ.get('MAGIC_CONTENT_LENGTH', None)
+app.config['MAGIC_CONTENT_LENGTH'] = int(os.environ.get('MAGIC_CONTENT_LENGTH', None))
 
 
 @app.route('/', methods=['GET', 'POST'])
