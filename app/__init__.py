@@ -1,21 +1,19 @@
-import os
-import magic, mimetypes
+# app/__init.py
+
+import magic
 from flask import Flask, request, render_template, url_for
 from datetime import datetime
 
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', None)
-app.config['MAGIC_CONTENT_LENGTH'] = int(os.environ.get('MAGIC_CONTENT_LENGTH', None))
+app.config.from_object('app.config')
 
 
 @app.route('/', methods=['GET', 'POST'])
-def home():
-    args = {'method': 'GET'}
+def index():
+    args = {'now_year': datetime.now().year}
     if request.method == 'POST':
-        file = request.files['file']
-        if file:
-            f = magic.Magic(uncompress=True)
-            args['file_data'] = f.from_buffer(file.read(app.config['MAGIC_CONTENT_LENGTH']))
-            args['mime_type'], args['encoding'] = mimetypes.guess_type(file.filename, strict=False)
-    return render_template('home.html', args=args)
+        f_chunk = request.files['file'].read(app.config['CHUNK_SIZE'])
+        if f_chunk:
+            args['f_magic'] = magic.from_buffer(f_chunk)
+            args['f_mime'] = magic.from_buffer(f_chunk, mime=True)
+    return render_template('layout.html', args=args)
