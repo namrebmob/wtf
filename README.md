@@ -1,2 +1,1 @@
-# wtf
-Service helping to detect file type without extension
+# wtf Service helping to detect file type without extension

@@ -34,10 +34,17 @@
             </div>
         </header>
         <main role='main' class='inner cover'>
-            <h1 class='cover-heading'>{{ args.f_mime or 'Magic file type identifier' }}</h1>
-            <p class="lead">{{ args.f_magic }}</p>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <form action='{{ url_for('index') }}' method='post' enctype='multipart/form-data'>
-                <div class="form-group">
+                <div class='form-group'>
                     <div class='custom-file'>
                         <input type='file' name='file' class='custom-file-input' id='custom-file'>
                         <label class='custom-file-label' for='custom-file'>Upload you file here</label>
@@ -48,7 +55,7 @@
         </main>
         <footer class='mastfoot mt-auto'>
             <div class='inner'>
-                <p>{{ args.now_year }}, <sup>* </sup><a href="{{ url_for('index') }}">What the file</a> by <a href='http://buslov.ru/' target='_blank'>bomberman</a>.</p>
+                <p>{{ year }}, <sup>* </sup><a href="{{ url_for('index') }}">What the file</a> by <a href='http://buslov.ru/' target='_blank'>bomberman</a>.</p>
             </div>
         </footer>
     </div>
