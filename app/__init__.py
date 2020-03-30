@@ -24,5 +24,6 @@ def index():
     return render_template('layout.html', args=args)
 
 @app.errorhandler(413)
-def page_not_found(e):
-    return "Your error page for 413 status code", 413
+def request_entity_too_large(e):
+    flash(f'{e}', 'danger')
+    return redirect(request.url)

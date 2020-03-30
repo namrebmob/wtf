@@ -7,5 +7,5 @@ import os
 from gevent.pywsgi import WSGIServer
 from app import app
 
-http_server = WSGIServer(('0.0.0.0', 8000), app)
+http_server = WSGIServer(('0.0.0.0', int(os.environ['PORT'])), app)
 http_server.serve_forever()
