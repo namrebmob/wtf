@@ -23,6 +23,7 @@ def index():
             return redirect(request.url)
     return render_template('layout.html', args=args)
 
+
 @app.errorhandler(413)
 def request_entity_too_large(e):
     flash(f'{e}', 'danger')
