@@ -13,4 +13,4 @@ TIMEOUT = env.int('GUNICORN_TIMEOUT', default=30)
 
 
 def before_fork(server, worker):
-    fileutils.touch('/tmp/app-initialized').close()
+    fileutils.touch('/tmp/app-initialized')
