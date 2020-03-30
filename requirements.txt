@@ -9,7 +9,6 @@ itsdangerous==1.1.0
 Jinja2==2.11.1
 MarkupSafe==1.1.1
 marshmallow==3.5.1
-pkg-resources==0.0.0
 python-dotenv==0.12.0
 python-magic==0.4.15
 Werkzeug==1.0.0
