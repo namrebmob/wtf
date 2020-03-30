@@ -6,6 +6,7 @@ import magic
 from datetime import datetime
 from flask import Flask, flash, request, redirect, render_template, url_for
 
+
 app = Flask(__name__)
 app.config.from_object('app.config')
 
