@@ -1,14 +1,14 @@
 # app/__init.py
 
-from gevent import monkey
-monkey.patch_all()
+# from gevent import monkey
+# monkey.patch_all()
 import magic
 from datetime import datetime
 from flask import Flask, flash, request, redirect, render_template, url_for
 
 
 app = Flask(__name__)
-app.config.from_object('app.config')
+app.config.from_object('app.config.config')
 
 
 @app.route('/', methods=['GET', 'POST'])

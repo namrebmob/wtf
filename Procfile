@@ -1,1 +1,1 @@
-web: gunicorn -c app/gunicorn.config.py app:app
+web: bin/start-nginx gunicorn -c app/config/gunicorn.config.py app:app
